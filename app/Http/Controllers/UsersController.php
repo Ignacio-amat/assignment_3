@@ -30,10 +30,19 @@ class UsersController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
+            'role' => 'required',
         ]);
 
+        $data = $request->all();
+
         // Create a new user
-        $user = User::create($validatedData);
+        User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => \Hash::make($data['password']),
+            'role' => $data['role']
+        ]);
+
 
         // Redirect or show a success message
         return redirect()->route('users.index')->with('success', 'User created successfully.');
@@ -51,6 +60,7 @@ class UsersController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
             'password' => 'nullable|min:8',
+            'role' => 'required',
         ]);
 
         // Update the user

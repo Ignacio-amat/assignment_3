@@ -49,7 +49,7 @@
 @section('content')
     <div class="user-table-container">
         <h1 class="">All Users</h1>
-        <button><a href="{{ route('users.create') }}">Create</a></button>
+        <button style="padding: 20px; border-radius: 12px; margin-bottom: 10px; background-color: #1aa1ff; color: #fff"><a href="{{ route('users.create') }}">Create</a></button>
         <table class="user-table">
             <thead>
             <tr>
@@ -67,6 +67,7 @@
                     <td>{{ $user->isAdmin() ? 'Admin' : 'Normal' }}</td>
                     <td>
                         <button style="margin-bottom: 20px"><a href="{{ route('users.show', $user) }}">Show</a></button>
+                        <button style="margin-bottom: 20px"><a href="{{ route('users.edit', $user) }}">Edit</a></button>
                         <form method="POST" action="/users/{{ $user->id }}">
                             @csrf
                             @method('DELETE')
