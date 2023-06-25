@@ -13,7 +13,8 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.11",
         "mockery/mockery": "^1.4.4",
-        "phpunit/phpunit": "^10.1"
+        "phpunit/phpunit": "^10.1",
+        "fzaninotto/faker": "~1.4"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
