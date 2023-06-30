@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +20,8 @@ class FooFactory extends Factory
         return [
             'name' => $this->faker->name,
             'thud' => $this->faker->randomNumber(),
-            'wombat' => $this->faker->boolean
+            'wombat' => $this->faker->boolean,
+            'user_id' => User::factory()->create()->id
         ];
     }
 }

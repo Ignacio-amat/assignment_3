@@ -112,6 +112,8 @@
                 </div>
             </div>
 
+            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+
             <div class="submit-button">
                 <button type="submit">Submit</button>
             </div>

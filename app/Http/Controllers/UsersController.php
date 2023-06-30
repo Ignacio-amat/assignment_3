@@ -4,27 +4,40 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
     public function index()
     {
+        if (!Auth::check() || Auth::user()->role !== 'admin') {
+            abort(403);
+        }
         $users = User::all();
         return view('users.index', compact('users'));
     }
 
     public function show(User $user)
     {
+        if (!Auth::check() || Auth::user()->role !== 'admin') {
+            abort(403);
+        }
         return view('users.show', compact('user'));
     }
 
     public function create()
     {
+        if (!Auth::check() || Auth::user()->role !== 'admin') {
+            abort(403);
+        }
         return view('users.create');
     }
 
     public function store(Request $request)
     {
+        if (!Auth::check() || Auth::user()->role !== 'admin') {
+            abort(403);
+        }
         // Validate the form data
         $validatedData = $request->validate([
             'name' => 'required',
@@ -50,11 +63,17 @@ class UsersController extends Controller
 
     public function edit(User $user)
     {
+        if (!Auth::check() || Auth::user()->role !== 'admin') {
+            abort(403);
+        }
         return view('users.edit', compact('user'));
     }
 
     public function update(Request $request, User $user)
     {
+        if (!Auth::check() || Auth::user()->role !== 'admin') {
+            abort(403);
+        }
         // Validate the form data
         $validatedData = $request->validate([
             'name' => 'required',
@@ -72,6 +91,9 @@ class UsersController extends Controller
 
     public function destroy(User $user)
     {
+        if (!Auth::check() || Auth::user()->role !== 'admin') {
+            abort(403);
+        }
         // Delete the user
         $user->delete();
 

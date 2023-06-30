@@ -64,7 +64,7 @@
                 <tr>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ $user->isAdmin() ? 'Admin' : 'Normal' }}</td>
+                    <td>{{ $user->role }}</td>
                     <td>
                         <button style="margin-bottom: 20px"><a href="{{ route('users.show', $user) }}">Show</a></button>
                         <button style="margin-bottom: 20px"><a href="{{ route('users.edit', $user) }}">Edit</a></button>

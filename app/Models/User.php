@@ -60,8 +60,8 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function isAdmin()
+    public function foos()
     {
-        return $this->role === 'admin';
+        return $this->hasMany(Foo::class);
     }
 }

@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        FooFactory::new()->count(15)->create();
 
         User::factory()->create([
             'name' => 'Ignacio',
@@ -29,5 +28,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'role' => 'admin',
         ]);
+
+        $this->call(FooSeeder::class);
     }
 }

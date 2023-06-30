@@ -19,4 +19,9 @@ class Foo extends Model
             return $this->thud;
         }
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

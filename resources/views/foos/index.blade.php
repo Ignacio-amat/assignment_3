@@ -82,9 +82,11 @@
                 <td>
                     <a href="{{ route('foos.show', $foo) }}" class="button is-primary">Show</a>
                 </td>
-                <td>
-                    <a href="{{ route('foos.edit', $foo) }}" class="button is-primary">Edit</a>
-                </td>
+                @if(Auth::user()->id === $foo->user_id || Auth::user()->role === 'admin')
+                    <td>
+                        <a href="{{ route('foos.edit', $foo) }}" class="button is-primary">Edit</a>
+                    </td>
+                @endif
             </tr>
         @endforeach
         </tbody>

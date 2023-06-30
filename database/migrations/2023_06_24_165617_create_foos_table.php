@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('foos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name')->nullable(false);
             $table->unsignedInteger('thud');
             $table->boolean('wombat')->nullable()->default(false);
